@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS post;
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
+  userType TEST NOT NULL,
   password TEXT NOT NULL
 );
 
@@ -14,4 +15,18 @@ CREATE TABLE post (
   title TEXT NOT NULL,
   body TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
+);
+
+CREATE TABLE timeline (
+  id INTEGER PRIMARY KEY NOT NULL,
+  user_id INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  startTime TIMESTAMP NOT NULL,
+  startDate DATE NOT NULL,
+  endTime TIMESTAMP NOT NULL,
+  endDate DATE NOT NULL,
+  descriptions TEXT NOT NULL,
+  timelineStatus TEXT NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES user (id)
 );
