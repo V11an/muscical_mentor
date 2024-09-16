@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
-
+{% if g.user %}
 {% block header %}
   <h1>{% block title %}Timesline{% endblock %}</h1>
-  {% if g.user %}
+  <!-- <span>{{ g.user['userType'] }}</span> -->
+  {% if g.user['userType'] == "tutor" %}
     <a class="action" href="{{ url_for('tutor.create') }}">New</a>
   {% endif %}
 {% endblock %}
+{% endif %}
 
 {% block content %}
+{% if g.user %}
   {% for post in posts %}
     <article class="post">
       <header>
@@ -16,7 +19,10 @@
           <div class="about">by {{ post['username'] }} on {{ post['created'] }}</div>
         </div>
         {% if g.user['id'] == post['user_id'] %}
-          
+        <a class="action" href="#">Edit</a>
+        {% endif %}
+        {% if g.user['userType'] == "student" %}
+        <a class="action" href="#">View</a>
         {% endif %}
       </header>
       <p class="body">{{ post['body'] }}</p>
@@ -25,4 +31,5 @@
       <hr>
     {% endif %}
   {% endfor %}
+  {% endif %}
   {% endblock %}
