@@ -14,7 +14,7 @@ def index():
     posts = db.execute(
     'SELECT t.id, title, strftime("%Y-%m-%d %H:%M:%S", startTime) as startTime, '
     'strftime("%Y-%m-%d %H:%M:%S", endTime) as endTime, strftime("%Y-%m-%d %H:%M:%S", created) as created, '
-    'startDate, endDate, user_id, descriptions, timelineStatus, username '
+    'startDate, endDate, user_id, descriptions, timelineStatus '
     'FROM timeline t JOIN user u ON t.user_id = u.id '
     'ORDER BY created DESC'
 ).fetchall()
