@@ -29,14 +29,14 @@ input[type=submit] { align-self: start; min-width: 10em; } */
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-/* html,body{
+html,body{
 background-image: url('./back.jpg');
-/* background-color: red; */
-/* background-size: cover;
+background-color: red; 
+background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
-font-family: 'Numans', sans-serif; */
-/* }  */
+font-family: 'Numans', sans-serif; 
+} 
 
 
 .container{

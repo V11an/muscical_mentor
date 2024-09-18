@@ -74,10 +74,10 @@ def get_post(id, check_author=True):
     return post
 
 @bp.route('/profile')
-def index():
+def profile():
     db = get_db()
     profile = db.execute(
-    'SELECT firstname, secondname, userType, email FROM user where id=?', (g.user['user_id'])
+    'SELECT firstname, secondname, userType, email FROM user where id=?', (g.user['id'])
 ).fetchall()
 
     return render_template('profile.html', profile=profile)

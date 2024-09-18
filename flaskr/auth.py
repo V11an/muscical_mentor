@@ -61,8 +61,9 @@ def login():
             session.clear()
             session['user_id'] = user['id']
             session['user_type'] = user['userType']
-            return redirect(url_for('index'))
-
+            if user['userType'] == 'tutor':
+                return redirect(url_for('index'))
+            return redirect(url_for('student.dashboard'))
         flash(error)
 
     return render_template('login.html')
