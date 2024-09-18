@@ -1,0 +1,338 @@
+/* General styles */
+body {
+    font-family: sans-serif; /* Set a default font family */
+    margin: 0;
+    padding: 0;
+    /* background-image: url('/home/kertich/bottle/new_website/img/mask.jpg'); */
+
+  }
+  
+  /* Navigation bar */
+  nav {
+    background-color: #eee; /* Light background for navigation */
+    padding: 10px 20px;
+    display: flex;
+  }
+  
+  nav ul {
+    list-style: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+  }
+  
+  nav li {
+    display: inline-block; /* Make navigation items inline-block */
+    margin-right: 20px;
+  }
+  
+  nav li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Dark text color for navigation */
+  }
+  
+  nav li a:hover {
+    color: #007bff; /* Blue hover color for links */
+  }
+  
+  /* Hero section */
+  .hero {
+    background-color: #f5f5f5; /* Light background for hero section */
+    padding: 50px 0;
+    text-align: center; /* Center align hero content */
+  }
+  
+  .hero h1 {
+    font-size: 2em; /* Increase heading size */
+    margin-bottom: 15px;
+  }
+  
+  .hero p {
+    font-size: 1.2em; /* Adjust paragraph size */
+  }
+  
+  .hero button {
+    background-color: #007bff; /* Blue background for button */
+    color: #fff; /* White text for button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Indicate clickable button */
+  }
+  
+  .hero button:hover {
+    background-color: #0069d9; /* Darker blue on hover */
+  }
+  
+  /* Featured mentors section */
+  .featured-mentors {
+    /* padding: 30px 0; */
+    padding: 50px 0;
+    /* background-image: url('/home/kertich/bottle/new_website/img/back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex; */
+    text-align: center;
+  }
+
+  .dif-mentors {
+    display: flex;
+  }
+  
+  .featured-mentors h2 {
+    text-align: center; /* Center align heading */
+    margin-bottom: 20px;
+  }
+  
+  .mentor-card {
+    display: inline-block; /* Display mentor cards inline-block */
+    width: 30%; /* Set card width */
+    margin: 10px; /* Add spacing between cards */
+    text-align: center; /* Center card content */
+    border: 1px solid #ddd; /* Add thin border */
+    border-radius: 5px; /* Add rounded corners */
+    padding: 15px;
+  }
+  
+  .mentor-card img {
+    width: 100%; /* Set image width to fill card */
+    height: auto; /* Maintain image aspect ratio */
+  }
+  
+  .featured-mentors button {
+    background-color: #007bff; /* Blue background for button */
+    color: #fff; /* White text for button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Indicate clickable button */
+  }
+
+  .featured-mentors button:hover {
+    background-color: #0069d9; /* Darker blue on hover */
+  }
+
+
+  /* Latest blog posts section */
+  .latest-blog-posts {
+    padding: 30px 0;
+  }
+  
+  .latest-blog-posts h2 {
+    text-align: center; /* Center align heading */
+    margin-bottom: 20px;
+  }
+
+  
+  .blog-post {
+    margin-bottom: 20px; /* Add spacing between posts */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Arrange elements horizontally */
+    align-items: center; /* Align items vertically */
+  }
+  
+  .blog-post img {
+    width: 150px; /* Adjust image width as needed */
+    height: auto;
+    margin-right: 20px; /* Add spacing between image and content */
+  }
+  
+  .blog-post h3 {
+    font-size: 1.1em; /* Adjust heading size */
+    margin-bottom: 5px;
+  }
+  
+  .blog-post p {
+    margin-bottom: 10px;
+  }
+  
+  .blog-post a {
+    color: #007bff; /* Blue color for links */
+  }
+  
+  .blog-post a:hover {
+    color: #0069d9; /* Darker blue on hover */
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #eee; /* Light background for footer */
+    padding: 10px 20px;
+    text-align: center; /* Center align footer content */
+  }
+  
+  footer p {
+    margin-bottom: 10px;
+  }
+  
+  footer ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+  }
+  
+  footer li {
+    display: inline-block; /* Display footer links inline-block */
+    margin-right: 10px;
+  }
+  
+  footer a {
+    color: #333;
+  }
+
+  /* Add styles for the Student Dashboard */
+
+/* Dashboard content */
+.dashboard-content {
+  padding: 30px;
+  width: auto;
+}
+
+.dashboard-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+/* Profile section */
+.profile-section {
+  display: inline-block;
+  width: 100%; /*Adjust width as needed */
+  /* vertical-align: top; Align profile section to top */
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  /* padding: 50px 0; */
+  text-align: center;
+}
+
+.profile-section img {
+  width: 100%;
+  border-radius: 50%; /* Make profile picture circular */
+  margin-bottom: 10px;
+}
+
+.profile-section p {
+  margin-bottom: 5px;
+}
+
+/* Lessons and messages sections */
+.lessons-section,
+.messages-section {
+  display: inline-block;
+  width: 100%; /* Adjust width as needed */
+  vertical-align: top; /*Align sections to top*/
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.lessons-section h3,
+.messages-section h3 {
+  margin-bottom: 10px;
+}
+
+.lessons-section ul,
+.messages-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lessons-section li,
+.messages-section li {
+  margin-bottom: 10px;
+}
+
+/* profile.css (optional) */
+
+.profile {
+  /* Adjust overall profile section styling here */
+  width: 50%;  /* Adjust width as needed */
+  margin: 50px auto; /* Center the profile section */
+  padding: 20px;
+  border: 1px solid #ddd; /* Add a thin border */
+  border-radius: 5px; /* Add rounded corners */
+  text-align: center; /* Center profile content */
+}
+
+.profile-picture {
+  width: 200px; /* Adjust image size */
+  height: 200px; /* Adjust image size */
+  border-radius: 50%; /* Make image circular */
+  margin: 0 auto 20px; /* Center image and add some space below */
+}
+
+.profile p {
+  margin-bottom: 10px; /* Add spacing between profile details */
+}
+
+.profile button {
+  /* Style the update profile button here */
+  background-color: #007bff; /* Example blue button */
+  color: #fff; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile button:hover {
+  /* Define hover style for the button here */
+  background-color: #0069d9; /* Darker blue on hover */
+}
+
+.students-section,
+.messages-section {
+  /* Styles for student and messages sections */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.students-section ul,
+.messages-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.students-section li,
+.messages-section li {
+  margin-bottom: 10px;
+}
+
+/* Optional styles for student table */
+
+.table {
+  width: 100%; /* Set a width for the table */
+  margin-bottom: 20px; /* Add some space below the table */
+}
+
+.table th,
+.table td {
+  padding: 10px; /* Adjust padding for cells */
+  border: 1px solid #ddd; /* Add a thin border */
+}
+
+.table thead th {
+  background-color: #eee; /* Lighten header background color (optional) */
+}
+
+/* .container {
+  text-align: center;
+  align-items: center;
+}
+
+.container h1 {
+  text-align: center; /* Center the heading */
+/* }
+
+.form-label {
+  font-weight: bold; /* Make labels bolder (optional) */
+/* } */ 
+
+/* #calendar { */
+  /* Styles for calendar element (assuming you're using a calendar library) */
+  /* ... */
+/* } */

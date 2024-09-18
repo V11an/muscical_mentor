@@ -29,13 +29,15 @@ input[type=submit] { align-self: start; min-width: 10em; } */
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,body{
+/* html,body{
 background-image: url('./back.jpg');
-background-size: cover;
+/* background-color: red; */
+/* background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
-font-family: 'Numans', sans-serif;
-}
+font-family: 'Numans', sans-serif; */
+/* }  */
+
 
 .container{
 height: 100%;
@@ -114,3 +116,17 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+
+nav {
+    background-color: rebeccapurple; /* Light background for navigation */
+    padding: 10px 20px;
+  }
+
+  nav ul {
+    list-style: none; /* Remove default bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+  }

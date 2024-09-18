@@ -72,3 +72,12 @@ def get_post(id, check_author=True):
         abort(403)
 
     return post
+
+@bp.route('/profile')
+def index():
+    db = get_db()
+    profile = db.execute(
+    'SELECT firstname, secondname, userType, email FROM user where id=?', (g.user['user_id'])
+).fetchall()
+
+    return render_template('profile.html', profile=profile)
