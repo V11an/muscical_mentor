@@ -5,6 +5,8 @@ from . import db
 from . import auth
 from . import tutor
 from . import student
+from . import course
+
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -17,6 +19,7 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(tutor.bp)
     app.register_blueprint(student.bp)
+    app.register_blueprint(course.bp)
     app.add_url_rule('/', endpoint='index')
 
     if test_config is None:

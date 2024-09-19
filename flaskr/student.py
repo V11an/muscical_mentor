@@ -12,7 +12,6 @@ bp = Blueprint('student', __name__, url_prefix='/student')
 @login_required
 def dashboard():
     db = get_db()
-    print(g.user['id'])
     student = db.execute(
         'SELECT * FROM user WHERE id = ?', (g.user['id'],)
     ).fetchone()

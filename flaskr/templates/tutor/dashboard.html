@@ -1,0 +1,40 @@
+{% extends 'tutor/base.html' %} 
+
+{% block content %}
+
+    <section class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Profile</h5>
+          <p class="card-text">Name: {{ tutor['firstname'] }} </p>
+          <p class="card-text">Email: {{ tutor['email'] }} </p>
+          <p class="card-text"><p>Instrument: Guitar</p>
+          <button class="btn btn-sm bg-info text-white">Edit Profile</button>
+        </div>
+      </div>
+      
+
+      <div class="lessons-section">
+        <h3>Upcoming Lessons</h3>
+        <ul>
+          <li>
+            <p>Mentor: Mentor Name</p>
+            <p>Date: 2023-10-15</p>
+            <p>Time: 10:00 AM</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="messages-section">
+        <h3>Messages</h3>
+        <ul>
+          <li>
+            <p>From: Mentor Name</p>
+            <p>Subject: Lesson Reminder</p>
+            <p>Message: Don't forget our lesson tomorrow!</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+{% endblock %}
