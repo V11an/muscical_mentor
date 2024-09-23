@@ -19,4 +19,4 @@ def index():
     'ORDER BY created DESC'
 ).fetchall()
 
-    return render_template('tutor/index.html', posts=posts)
+    return render_template('index.html', posts=posts)
