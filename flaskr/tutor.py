@@ -6,7 +6,8 @@ from werkzeug.exceptions import abort
 from flaskr.auth import login_required
 from flaskr.db import get_db
 
-bp = Blueprint('tutor', __name__)
+bp = Blueprint('tutor', __name__, url_prefix='/tutor')
+
 
 @bp.route('/')
 def index():
@@ -20,6 +21,16 @@ def index():
 # ).fetchall()
 
     return render_template('index.html')
+
+@bp.route('/dashboard')
+@login_required
+def dashboard():
+    db = get_db()
+    tutor = db.execute(
+        'SELECT * FROM user WHERE id = ?', (g.user['id'],)
+    ).fetchone()
+    return render_template('tutor/dashboard.html', tutor = tutor)
+
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required

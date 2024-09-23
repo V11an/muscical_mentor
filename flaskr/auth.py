@@ -62,7 +62,8 @@ def login():
             session['user_id'] = user['id']
             session['user_type'] = user['userType']
             if user['userType'] == 'tutor':
-                return redirect(url_for('index'))
+                print('test here')
+                return redirect(url_for('tutor.dashboard'))
             return redirect(url_for('student.dashboard'))
         flash(error)
 
