@@ -10,16 +10,16 @@ bp = Blueprint('tutor', __name__)
 
 @bp.route('/')
 def index():
-    db = get_db()
-    posts = db.execute(
-    'SELECT t.id, title, strftime("%Y-%m-%d %H:%M:%S", startTime) as startTime, '
-    'strftime("%Y-%m-%d %H:%M:%S", endTime) as endTime, strftime("%Y-%m-%d %H:%M:%S", created) as created, '
-    'startDate, endDate, user_id, descriptions, timelineStatus '
-    'FROM timeline t JOIN user u ON t.user_id = u.id '
-    'ORDER BY created DESC'
-).fetchall()
+#     db = get_db()
+#     posts = db.execute(
+#     'SELECT t.id, title, strftime("%Y-%m-%d %H:%M:%S", startTime) as startTime, '
+#     'strftime("%Y-%m-%d %H:%M:%S", endTime) as endTime, strftime("%Y-%m-%d %H:%M:%S", created) as created, '
+#     'startDate, endDate, user_id, descriptions, timelineStatus '
+#     'FROM timeline t JOIN user u ON t.user_id = u.id '
+#     'ORDER BY created DESC'
+# ).fetchall()
 
-    return render_template('tutor/index.html', posts=posts)
+    return render_template('index.html')
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
