@@ -16,4 +16,4 @@ def dashboard():
         'SELECT * FROM user WHERE id = ?', (g.user['id'],)
     ).fetchone()
     
-    return render_template('student/stud_dash.html', student=student)
+    return render_template('student/dashboard.html', student=student)

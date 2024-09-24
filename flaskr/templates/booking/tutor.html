@@ -1,0 +1,54 @@
+{% extends 'tutor/base.html' %} {% block content %}
+
+<section class="container-fluid">
+  <div class="row m-2">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Bookings</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Student Name</th>
+                <th>Course</th>
+                <th>status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for booking in bookings %}
+              <tr>
+                <td>{{ booking.firstname }} {{ booking.secondname }}</td>
+                <td>{{ booking.course_title }}</td>
+                {% if booking.status == 'approve' %}
+                <td class="text-success">{{ booking.status }}</td>
+                {% elif booking.status == 'deny' %}
+                <td class="text-danger">{{ booking.status }}</td>
+                {% else %}
+                <td class="text-info">{{ booking.status }}</td>
+                {% endif %}
+                <td>
+                  <a
+                    href="{{ url_for('bookings.approve', booking_id = booking.id) }}"
+                    class="btn btn-sm bg-success text-white"
+                    >Approve</a
+                  >
+                  <a
+                    href="{{ url_for('bookings.deny', booking_id = booking.id) }}"
+                    class="btn btn-sm bg-danger text-white"
+                    >Deny</a
+                  >
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

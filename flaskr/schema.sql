@@ -56,8 +56,10 @@ CREATE  TABLE IF NOT EXISTS schedule (
 
 CREATE TABLE IF NOT EXISTS booking (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
   course_id INTEGER NOT NULL,
   status TEXT NOT NULL DEFAULT 'pending',
+  FOREIGN KEY  (user_id) REFERENCES user (id)
   FOREIGN KEY  (course_id) REFERENCES course (id)
 )
 
