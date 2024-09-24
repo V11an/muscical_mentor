@@ -7,6 +7,7 @@ from . import tutor
 from . import student
 from . import course
 from . import index
+from . import schedule
 
 
 def create_app(test_config=None):
@@ -22,6 +23,7 @@ def create_app(test_config=None):
     app.register_blueprint(student.bp)
     app.register_blueprint(course.bp)
     app.register_blueprint(index.bp)
+    app.register_blueprint(schedule.bp)
     app.add_url_rule('/', endpoint='index')
 
     if test_config is None:

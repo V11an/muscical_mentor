@@ -4,7 +4,7 @@
 
 <section class="container-fluid">
     <div class="row m-2">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">Courses</h5>
@@ -15,17 +15,17 @@
                             <tr>
                                 <th>Course Name</th>
                                 <th>Description</th>
-                                <th>Start</th>
-                                <th>End</th>
+                                <th>Duration</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for course in courses %} 
                             <tr>
-                                <td>{{ course.title }}</td>
+                                <td>{{ course.course_title }}</td>
                                 <td>{{ course.description }}</td>
-                                <td>{{ course.start_date }}</td>
-                                <td>{{ course.end_date }}</td>
+                                <td>{{ course.duration }}</td>
+                                <td>view</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
                     Create New Course

@@ -21,6 +21,7 @@ def dashboard():
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
+    print("create course")
     if request.method == 'POST':
         title = request.form['title']
         startTime = request.form['start_Time']
@@ -44,14 +45,8 @@ def create():
             )
             db.commit()
             return redirect(url_for('tutor.index'))
-    else:
-        db = get_db
-        courses = db.execute(
-            'SELECT * FROM course WHERE  user_id = ?', (g.user['id'],)
-        )
-        db.commit()
-        print(courses)
-        return render_template('tutor/create.html', courses = courses)
+    
+    
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
