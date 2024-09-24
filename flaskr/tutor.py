@@ -8,20 +8,6 @@ from flaskr.db import get_db
 
 bp = Blueprint('tutor', __name__, url_prefix='/tutor')
 
-
-# @bp.route('/')
-# def index():
-# #     db = get_db()
-# #     posts = db.execute(
-# #     'SELECT t.id, title, strftime("%Y-%m-%d %H:%M:%S", startTime) as startTime, '
-# #     'strftime("%Y-%m-%d %H:%M:%S", endTime) as endTime, strftime("%Y-%m-%d %H:%M:%S", created) as created, '
-# #     'startDate, endDate, user_id, descriptions, timelineStatus '
-# #     'FROM timeline t JOIN user u ON t.user_id = u.id '
-# #     'ORDER BY created DESC'
-# # ).fetchall()
-
-#     return render_template('index.html')
-
 @bp.route('/dashboard')
 @login_required
 def dashboard():
@@ -58,8 +44,14 @@ def create():
             )
             db.commit()
             return redirect(url_for('tutor.index'))
-
-    return render_template('tutor/create.html')
+    else:
+        db = get_db
+        courses = db.execute(
+            'SELECT * FROM course WHERE  user_id = ?', (g.user['id'],)
+        )
+        db.commit()
+        print(courses)
+        return render_template('tutor/create.html', courses = courses)
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
@@ -88,7 +80,39 @@ def get_post(id, check_author=True):
 def profile():
     db = get_db()
     profile = db.execute(
-    'SELECT firstname, secondname, userType, email FROM user where id=?', (g.user['id'])
-).fetchall()
+        'SELECT firstname, secondname, userType, email FROM user where id=?', (g.user['id'])
+    ).fetchall()
+    db.commit()
+    
+    schedules = db.execute(
+        'SELECT id, course_title, startTime, endTime, startDate, endDate, description '
+        'FROM course c JOIN schedule s ON c.id = s.user_id '
+        'where user_id=?', (g.user['id'])
+    )
+    db.commit()
 
-    return render_template('profile.html', profile=profile)
+    return render_template('profile.html', profile=profile,  schedules=schedules)
+
+@bp.route('/schedule'  , methods=('GET', 'POST'))
+def schedule():
+    if request.method == 'POST':
+        user_id  = g.user['id']
+        course_id  = request.form['course_id']
+        startTime   = request.form['start_time']
+        endTime     = request.form['end_time']
+        startDate  = request.form['start_date']
+        endDate    = request.form['end_date']
+
+        db =  get_db()
+        db.execute(
+            'INSERT INTO schedule (user_id, course_id, start_time, end_time, start_date,  end_date)'
+            ' VALUES (?, ?, ?, ?, ?)',
+            (user_id, course_id, startTime, endTime, startDate,  endDate))
+        db.commit()
+        return redirect(url_for('tutor.schedule'))
+    else:
+        db = get_db()
+        schedule = db.execute(
+            'SELECT user_id, course_id startTime, endTime, startDate, endDate FROM schedule where  user_id=?', (g.user['id'])
+            ).fetchall()
+        return render_template('tutor/schedule.html', schedule=schedule)

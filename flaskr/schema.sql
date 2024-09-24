@@ -41,3 +41,16 @@ CREATE TABLE IF NOT EXISTS course (
   description TEXT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES user (id)
 );
+
+CREATE  TABLE IF NOT EXISTS schedule (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  course_id INTEGER NOT NULL,
+  start_time  TEXT NOT NULL,
+  end_time TEXT NOT NULL,
+  start_date  DATE NOT NULL,
+  end_date DATE NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user (id)
+  FOREIGN KEY  (course_id) REFERENCES course (id)
+);
+
