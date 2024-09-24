@@ -11,11 +11,12 @@ bp = Blueprint('course', __name__, url_prefix='/course')
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create_course():
+    db = get_db()
     if request.method == 'POST':
         course_title = request.form['course_title']
         duration = request.form['duration']
         description = request.form['description']
-        db = get_db()
+        
         error = None
 
         if not course_title:
@@ -38,5 +39,12 @@ def create_course():
                 return redirect(url_for("course.create_course"))
 
         flash(error)
+    elif request.method == 'GET':
         
-    return render_template('course/create_course.html')
+        print(g.user['id'])
+        courses = db.execute(
+            'SELECT * FROM course WHERE  user_id = ?', (g.user['id'],)
+        ).fetchall()
+        
+        return render_template('course/create_course.html', courses=courses)
+        
