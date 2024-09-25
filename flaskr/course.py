@@ -25,6 +25,16 @@ def create_course():
             error = 'duration is required.'
         elif not description:
             error = 'description is required.'
+        elif course_title is "":
+            error = 'course_title is required.'
+            
+        course_present = db.execute(
+            'SELECT id FROM course WHERE course_title = ? AND user_id = ?', (course_title, g.user['id'])
+        ).fetchone()
+
+        if course_present:
+            error = 'You already registered for this Instrument.'
+
 
         if error is None:
             try:
@@ -39,6 +49,7 @@ def create_course():
                 return redirect(url_for("course.create_course"))
 
         flash(error)
+        return redirect(url_for("course.create_course"))
     elif request.method == 'GET':
         
         print(g.user['id'])
@@ -47,4 +58,12 @@ def create_course():
         ).fetchall()
         
         return render_template('course/create_course.html', courses=courses)
+    
+@bp.route('/delete_course/<int:course_id>')  # Ensure you have the slash before course_id
+def delete_course(course_id):
+    db = get_db()
+    db.execute('DELETE FROM course WHERE id = ?', (course_id,))
+    db.commit()  # Make sure to commit the transaction
+    return redirect(url_for('course.create_course'))  # Redirect to the create course page
+
         

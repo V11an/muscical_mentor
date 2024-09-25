@@ -15,7 +15,20 @@ def dashboard():
     tutor = db.execute(
         'SELECT * FROM user WHERE id = ?', (g.user['id'],)
     ).fetchone()
-    return render_template('tutor/dashboard.html', tutor = tutor)
+    # fetch all students 
+    students = db.execute(
+        'SELECT * FROM user WHERE userType = ?', ('student', )
+    ).fetchall()
+    
+    students_count = len(students)
+    
+    courses = db.execute(
+        'SELECT * FROM course WHERE user_id = ?', (g.user['id'],)
+    ).fetchall()
+    
+    courses_count = len(courses)
+    
+    return render_template('tutor/dashboard.html', tutor = tutor,  students_count = students_count, courses=courses, courses_count = courses_count)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -74,19 +87,19 @@ def get_post(id, check_author=True):
 @bp.route('/profile')
 def profile():
     db = get_db()
-    profile = db.execute(
-        'SELECT firstname, secondname, userType, email FROM user where id=?', (g.user['id'])
-    ).fetchall()
+    myprofile = db.execute(
+        'SELECT firstname, secondname, userType, email FROM user WHERE id = ?', (g.user['id'],)  # Note the comma
+    ).fetchone()
     db.commit()
     
-    schedules = db.execute(
-        'SELECT id, course_title, startTime, endTime, startDate, endDate, description '
-        'FROM course c JOIN schedule s ON c.id = s.user_id '
-        'where user_id=?', (g.user['id'])
-    )
-    db.commit()
+    # schedules = db.execute(
+    #     'SELECT id, course_title, startTime, endTime, startDate, endDate, description '
+    #     'FROM course c JOIN schedule s ON c.id = s.user_id '
+    #     'where user_id=?', (g.user['id'])
+    # )
+    # db.commit()
 
-    return render_template('profile.html', profile=profile,  schedules=schedules)
+    return render_template('tutor/profile.html', myprofile=myprofile)
 
 @bp.route('/schedule'  , methods=('GET', 'POST'))
 def schedule():
@@ -111,3 +124,12 @@ def schedule():
             'SELECT user_id, course_id startTime, endTime, startDate, endDate FROM schedule where  user_id=?', (g.user['id'])
             ).fetchall()
         return render_template('tutor/schedule.html', schedule=schedule)
+    
+# @bp.route('/profile/<int:id>', methods=('GET', 'POST'))
+# def profile(id):
+#     if request.method == 'GET':
+#         db = get_db()
+#         tutor =  db.execute(
+#             'SELECT id, firstname, secondname, userType, email FROM user where id=?', (g.user['id'])
+#         )
+#         return render_template('tutor.profile', tutor=tutor)

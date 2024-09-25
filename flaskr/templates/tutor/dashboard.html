@@ -19,7 +19,7 @@
               </div>
               <div class="col-md-3 d-flex justify-content-around">
                 <div class="row text-center align-items-center">
-                  <h1 class=" text-center font-size">10</h1>
+                  <h1 class=" text-center font-size">{{ students_count }}</h1>
                 </div>
               </div>
             </div>
@@ -29,7 +29,7 @@
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Students</h5>
+            <h5 class="card-title">Instrument</h5>
             <hr>
             <div class="row">
               <div class="col-md-3 d-flex justify-content-around">
@@ -40,7 +40,7 @@
               </div>
               <div class="col-md-3 d-flex justify-content-around">
                 <div class="row text-center align-items-center">
-                  <h1 class=" text-center font-size">10</h1>
+                  <h1 class=" text-center font-size">{{ courses_count }}</h1>
                 </div>
               </div>
             </div>
@@ -73,8 +73,8 @@
 
   <section>
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
+      <div class="row justify-content-around">
+        <div class="col-md-9">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Courses</h5>
@@ -85,35 +85,27 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Instrument</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Description</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {%  for c in courses %}
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row">{{c.id}}</th>
+                    <td>{{c.course_title}}</td>
+                    <td>{{c.duration}}</td>
+                    <td>{{c.description}}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                    
+                  {%  endfor %}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div class="card">
             <div class="timeline">
               <div class="timeline-container left">
@@ -167,7 +159,7 @@
             </div>
 
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section><!-- <div class="card">

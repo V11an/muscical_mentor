@@ -3,6 +3,11 @@
 {% block content %}
 
 <section class="container-fluid">
+    <div class="row justify-content-around">
+        {% for message in get_flashed_messages() %}
+        <div class="flash text-danger">{{ message }}</div>
+      {% endfor %}
+    </div>
     <div class="row m-2">
         <div class="col-md-8">
             <div class="card">
@@ -25,7 +30,7 @@
                                 <td>{{ course.course_title }}</td>
                                 <td>{{ course.description }}</td>
                                 <td>{{ course.duration }}</td>
-                                <td>view</td>
+                                <td class="d-flex"><a href="{{ url_for('course.delete_course', course_id = course.id) }}" class="btn btn-sm bg-danger text-white m-1">Delete</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -43,8 +48,16 @@
                         <div class="form-row">
                             <div class="form-group col-md-12 mb-2">
                                 <label for="inputEmail4">Course Title</label>
-                                <input type="text" class="form-control" id="inputEmail4" placeholder="Enter a title ..."
-                                    name="course_title">
+                                <Select class="form-control" name="course_title">
+                                    <option value="">Choise an Instrument</option>
+                                    <option value="Guitar">Guitar</option>
+                                    <option value="Piona">Piona</option>
+                                    <option value="Violin">Violin</option>
+                                    <option value="Drums">Drums</option>
+                                    <option value="Saxophone">Saxophone</option>
+                                </Select>
+                                <!-- <input type="text" class="form-control" id="inputEmail4" placeholder="Enter a title ..."
+                                    name="course_title"> -->
                             </div>
                             <div class="form-group col-md-12 mb-2">
                                 <label for="inputPassword4">Duration</label>
