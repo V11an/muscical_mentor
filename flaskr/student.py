@@ -17,3 +17,18 @@ def dashboard():
     ).fetchone()
     
     return render_template('student/dashboard.html', student=student)
+
+@bp.route('/profile')
+def student_profile():
+    db = get_db()
+    myprofile = db.execute(
+        'SELECT firstname, secondname, userType, email FROM user WHERE id = ?', (g.user['id'],)  # Note the comma
+    ).fetchone()
+    db.commit()
+    
+    mybookings = db.execute(
+        'SELECT * FROM booking JOIN user ON booking.user_id = user.id JOIN course ON booking.course_id = course.id  WHERE user.id = ?', (g.user['id'],)
+    ).fetchall()
+    
+
+    return render_template('student/profile.html', myprofile=myprofile, mybookings=mybookings)

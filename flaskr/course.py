@@ -25,6 +25,11 @@ def create_course():
             error = 'duration is required.'
         elif not description:
             error = 'description is required.'
+        elif duration and duration.isdigit():
+            duration = int(duration)
+            if duration > 100:
+                error = 'Duration should be less than 100.'
+        
         elif course_title is "":
             error = 'course_title is required.'
             
@@ -46,9 +51,10 @@ def create_course():
             except db.IntegrityError:
                 error = f"Something Went wrong."
             else:
+                flash('Successful!', 'success')
                 return redirect(url_for("course.create_course"))
 
-        flash(error)
+        flash(error,'error')
         return redirect(url_for("course.create_course"))
     elif request.method == 'GET':
         

@@ -20,6 +20,18 @@ def schedule():
         start_date = request.form['start_date']
         end_date = request.form['end_date']
         
+        if not course_id:
+            error = 'course_title is required.'
+        elif not start_time:
+            error = 'start time is required.'
+        elif not end_time:
+            error = 'end time is required.'
+        elif not start_date:
+            error = 'start date is required.'
+        elif not end_date:
+            error = 'end date is required.'
+        
+        
         error = None
 
         if error is None:

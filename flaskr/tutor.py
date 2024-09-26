@@ -92,14 +92,11 @@ def profile():
     ).fetchone()
     db.commit()
     
-    # schedules = db.execute(
-    #     'SELECT id, course_title, startTime, endTime, startDate, endDate, description '
-    #     'FROM course c JOIN schedule s ON c.id = s.user_id '
-    #     'where user_id=?', (g.user['id'])
-    # )
-    # db.commit()
+    mybookings = db.execute(
+        'SELECT * FROM course WHERE user_id = ?', (g.user['id'],)
+    ).fetchall()
 
-    return render_template('tutor/profile.html', myprofile=myprofile)
+    return render_template('tutor/profile.html', myprofile=myprofile , mybookings=mybookings)
 
 @bp.route('/schedule'  , methods=('GET', 'POST'))
 def schedule():

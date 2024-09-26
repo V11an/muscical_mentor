@@ -19,6 +19,7 @@ def bookings():
     return render_template('booking/index.html', courses=courses)
 
 @bp.route('/sessionBooking/<int:course_id>/<int:tutor_id>')
+@login_required
 def sessionBooking(course_id,tutor_id):
     db = get_db()
     error = None
@@ -45,6 +46,7 @@ def sessionBooking(course_id,tutor_id):
     return redirect(url_for("bookings.bookings"))
 
 @bp.route('/tutor')
+@login_required
 def bookingTutor():
     db = get_db()
     bookings = db.execute(
@@ -57,6 +59,7 @@ def bookingTutor():
 
 
 @bp.route('/approve/<int:booking_id>')
+@login_required
 def approve(booking_id):
     db = get_db()
     error = None
@@ -78,6 +81,7 @@ def approve(booking_id):
 
 
 @bp.route('/deny/<int:booking_id>')
+@login_required
 def deny(booking_id):
     db = get_db()
     error = None
@@ -98,6 +102,7 @@ def deny(booking_id):
     return redirect(url_for("bookings.bookingTutor"))
 
 @bp.route('/booked')
+@login_required
 def  booked():
     db = get_db()
     bookings = db.execute(
