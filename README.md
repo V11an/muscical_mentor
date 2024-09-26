@@ -6,7 +6,7 @@ A simple paragragh
 
 Another simple paragragh
 
-![title image](</home/kertich/ALX/muscical_mentor/flaskr/static/back.jpg>)
+![title image](</flaskr/static/back.jpg>)
 
 ## ANOTHER SUBHEADING
 
