@@ -1,0 +1,42 @@
+{% extends 'student/base.html' %} {% block content %}
+
+<section class="container-fluid">
+  <div class="row m-2">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Bookings</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Tutor</th>
+                <th>Course</th>
+                <th>status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for booking in bookings %}
+              <tr>
+                <td>{{ booking.firstname }} {{ booking.secondname }}</td>
+                <td>{{ booking.course_title }}</td>
+                {% if booking.status == 'approve' %}
+                <td class="text-success">{{ booking.status }}</td>
+                {% elif booking.status == 'deny' %}
+                <td class="text-danger">{{ booking.status }}</td>
+                {% else %}
+                <td class="text-info">{{ booking.status }}</td>
+                {% endif %}
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

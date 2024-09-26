@@ -24,13 +24,13 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Tutor</a>
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('tutor.dashboard')}}">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('course.create_course') }}">Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('schedule.schedule') }}">Schedules</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('bookings.bookingTutor') }}">Bookings</a></li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('tutor.profile') }}">Profile</a></li>
           {% if session.user_id %}
           <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></li>
           {% endif %}

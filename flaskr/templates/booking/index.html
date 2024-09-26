@@ -3,6 +3,11 @@
 {% block content %}
 
 <section class="container-fluid">
+    <div class="row justify-content-around"></div>
+        {% for message in get_flashed_messages() %}
+        <div class="flash text-danger">{{ message }}</div>
+      {% endfor %}
+    </div>
     <div class="row m-2">
         <div class="col-md-12">
             <div class="card">
@@ -27,7 +32,7 @@
                                 <td>{{ course.firstname }} {{ course.secondname }}</td>
                                 <td>{{ course.description }}</td>
                                 <td>{{ course.duration }}</td>
-                                <td><a href="{{ url_for('bookings.sessionBooking', course_id = course.id) }}" class="btn btn-sm bg-success text-white">Book</a></td>
+                                <td><a href="{{ url_for('bookings.sessionBooking', course_id = course.course_id, tutor_id=course.tutor_id) }}" class="btn btn-sm bg-success text-white">Book</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
