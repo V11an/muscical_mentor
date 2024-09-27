@@ -27,8 +27,16 @@ def dashboard():
     ).fetchall()
     
     courses_count = len(courses)
+
+    bookings = db.execute(
+        'SELECT * FROM booking JOIN user ON booking.tutor_id = user.id JOIN course ON booking.course_id = course.id WHERE booking.user_id = ?',(g.user['id'],)
+    ).fetchall()
     
-    return render_template('tutor/dashboard.html', tutor = tutor,  students_count = students_count, courses=courses, courses_count = courses_count)
+    bookings_count = len(bookings)
+    
+    # return render_template('tutor/dashboard.html', tutor = tutor,  students_count = students_count, courses=courses, courses_count = courses_count, bookings_count = bookings_count, bookings = bookings)
+
+    return render_template('tutor/dashboard.html', tutor = tutor,  courses=courses, courses_count = courses_count, bookings_count = bookings_count, bookings = bookings)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
