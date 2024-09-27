@@ -1,6 +1,6 @@
 
 
-![title image](</flaskr/static/dashboard.jpg>)
+![title image](</flaskr/static/dashboard.png>)
 
 
 # Musical Mentor
