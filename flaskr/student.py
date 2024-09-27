@@ -19,6 +19,7 @@ def dashboard():
     return render_template('student/dashboard.html', student=student)
 
 @bp.route('/profile')
+@login_required
 def student_profile():
     db = get_db()
     myprofile = db.execute(

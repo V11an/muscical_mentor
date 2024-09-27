@@ -1,4 +1,4 @@
-{% extends 'tutor/base.html' %}
+{% extends 'student/base.html' %}
 
 {% block content %}
 <section style="background-color: #eee;">
@@ -52,7 +52,7 @@
             <div class="col-md-12">
               <div class="card mb-4 mb-md-0">
                 <div class="card-body">
-                  <p class="mb-4"><span class="text-primary font-italic me-1">Assigment</span> Instruments
+                  <p class="mb-4"><span class="text-primary font-italic me-1">lesson progress</span> per 100hrs
                   </p>
                   {% for instrument in mybookings %}
                     <p class="my-3" style="font-size: .77rem;">{{ instrument.course_title }}</p>

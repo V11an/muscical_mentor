@@ -25,7 +25,7 @@
                             <tr>
                                 <td>{{ course.course_title }}</td>
                                 <td>{{ course.description }}</td>
-                                <td>{{ course.duration }}</td>
+                                <td>{{ course.duration }} hrs</td>
                                 <td class="d-flex"><a href="{{ url_for('course.delete_course', course_id = course.id) }}" class="btn btn-sm bg-danger text-white m-1">Delete</a></td>
                             </tr>
                             {% endfor %}
@@ -57,9 +57,9 @@
                             <div class="form-group col-md-12 mb-2">
                                 <label for="inputEmail4">Course Title</label>
                                 <Select class="form-control" name="course_title">
-                                    <option value="">Choise an Instrument</option>
+                                    <option value="">Choose an Instrument</option>
                                     <option value="Guitar">Guitar</option>
-                                    <option value="Piona">Piona</option>
+                                    <option value="Piona">Piano</option>
                                     <option value="Violin">Violin</option>
                                     <option value="Drums">Drums</option>
                                     <option value="Saxophone">Saxophone</option>
@@ -68,7 +68,7 @@
                                     name="course_title"> -->
                             </div>
                             <div class="form-group col-md-12 mb-2">
-                                <label for="inputPassword4">Duration</label>
+                                <label for="inputPassword4">Duration (in hours) </label>
                                 <input type="number" class="form-control" id="inputPassword4" placeholder="" name="duration">
                             </div>
                         </div>

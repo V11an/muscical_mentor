@@ -24,7 +24,7 @@ def sessionBooking(course_id,tutor_id):
     db = get_db()
     error = None
     book_present = db.execute(
-        'SELECT * FROM booking WHERE course_id = ?', (course_id,)
+        'SELECT * FROM booking WHERE course_id = ? AND user_id = ?', (course_id, g.user['id'],)
     ).fetchone()
     
     if book_present:
@@ -106,7 +106,7 @@ def deny(booking_id):
 def  booked():
     db = get_db()
     bookings = db.execute(
-        'SELECT * FROM booking JOIN user ON booking.tutor_id = user.id JOIN course ON booking.course_id = course.id'
+        'SELECT * FROM booking JOIN user ON booking.tutor_id = user.id JOIN course ON booking.course_id = course.id WHERE booking.user_id = ?',(g.user['id'],)
     ).fetchall()
     
     return render_template('booking/student.html', bookings=bookings)

@@ -65,7 +65,9 @@ def create_course():
         
         return render_template('course/create_course.html', courses=courses)
     
+
 @bp.route('/delete_course/<int:course_id>')  # Ensure you have the slash before course_id
+@login_required
 def delete_course(course_id):
     db = get_db()
     db.execute('DELETE FROM course WHERE id = ?', (course_id,))
