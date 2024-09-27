@@ -49,8 +49,12 @@ def sessionBooking(course_id,tutor_id):
 @login_required
 def bookingTutor():
     db = get_db()
+    # bookings = db.execute(
+    #     'SELECT * FROM booking JOIN user ON booking.user_id = user.id JOIN course ON booking.course_id = course.id'
+    # ).fetchall()
+    
     bookings = db.execute(
-        'SELECT * FROM booking JOIN user ON booking.user_id = user.id JOIN course ON booking.course_id = course.id'
+        'SELECT * FROM booking JOIN user ON booking.tutor_id = user.id JOIN course ON booking.course_id = course.id WHERE booking.user_id = ?',(g.user['id'],)
     ).fetchall()
     
     # JOIN user ON course.user_id = user.id

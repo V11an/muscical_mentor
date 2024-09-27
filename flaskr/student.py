@@ -15,8 +15,22 @@ def dashboard():
     student = db.execute(
         'SELECT * FROM user WHERE id = ?', (g.user['id'],)
     ).fetchone()
+
+    bookings = db.execute(
+        'SELECT * FROM booking JOIN user ON booking.tutor_id = user.id JOIN course ON booking.course_id = course.id WHERE booking.user_id = ?',(g.user['id'],)
+    ).fetchall()
+
+    courses_count = len(bookings)
+
+    status = db.execute(
+        # 'SELECT * FROM booking JOIN user ON booking.tutor_id = user.id JOIN course ON booking.course_id = course.id WHERE booking.status = status',('approve',)
+        'SELECT * FROM booking JOIN user ON booking.tutor_id = user.id JOIN course ON booking.course_id = course.id WHERE booking.user_id = ?',(g.user['id'],)
+
+    ).fetchall()
+
+    status_count = len(status)
     
-    return render_template('student/dashboard.html', student=student)
+    return render_template('student/dashboard.html', student=student, bookings=bookings, courses_count = courses_count, status=status, status_count = status_count)
 
 @bp.route('/profile')
 @login_required
