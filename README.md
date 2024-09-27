@@ -1,13 +1,12 @@
 
-
-![title image](</flaskr/static/dashboard.png>)
-
-
 # Musical Mentor
 
 ## Project Overview
 
 **Musical Mentor** is a courier service application designed to streamline parcel delivery by allowing users to send parcels to various destinations efficiently. With features for creating delivery orders, modifying them, and viewing delivery details, Deliveroo provides users with an intuitive interface for managing their parcels. Additionally, the service offers real-time updates and visualization through Google Maps integration, ensuring users are always informed about their deliveries.
+
+![title image](</flaskr/static/dashboard.png>)
+
 
 ## MVP Features
 
